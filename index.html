@@ -1,33 +1,221 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website của tôi</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudFlow - CI/CD Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">My Portfolio</div>
-            <ul>
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-gray-950 text-white">
 
-    <main>
-        <section class="hero">
-            <h1>Chào mừng bạn đến với Website của tôi!</h1>
-            <p>Tôi đang học về CI/CD và lập trình web tĩnh.</p>
-            <button class="cta-btn">Tìm hiểu thêm</button>
-        </section>
-    </main>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        CloudFlow
+      </h1>
+      <div class="flex gap-8 text-sm">
+        <a href="#pipeline" class="hover:text-cyan-400 transition">Pipeline</a>
+        <a href="#features" class="hover:text-cyan-400 transition">Features</a>
+        <a href="#demo" class="hover:text-cyan-400 transition">Live Demo</a>
+      </div>
+    </div>
+  </nav>
 
-    <footer>
-        <p>&copy; 2026 Được tạo bởi GitHub Actions CI/CD</p>
-    </footer>
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <h2 class="text-6xl font-bold leading-tight">
+          Deploy <span class="text-cyan-400">Faster.</span><br>
+          Break <span class="text-cyan-400">Less.</span>
+        </h2>
+        <p class="text-xl text-gray-300">
+          Trải nghiệm CI/CD tự động với GitHub Actions.<br>
+          Chỉ cần push code → Website tự động deploy.
+        </p>
+        <button onclick="triggerPipeline()" 
+                class="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold text-lg px-10 py-4 rounded-2xl flex items-center gap-3 transition">
+          <i class="fas fa-rocket"></i>
+          Trigger Deploy Now
+        </button>
+        <div class="flex items-center gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check text-green-400"></i>
+            <span>GitHub Pages</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check text-green-400"></i>
+            <span>Auto Deploy</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-black/40 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-8 shadow-2xl">
+        <div id="terminal" class="bg-black rounded-2xl p-6 font-mono text-sm h-96 overflow-hidden">
+          <p class="text-green-400">$ git push origin main</p>
+          <p class="text-gray-400 mt-4">Waiting for GitHub Actions...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Pipeline -->
+  <section id="pipeline" class="py-24 bg-black">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">CI/CD Pipeline</h2>
+      <p class="text-center text-gray-400 mb-12">Click nút bên dưới để xem quy trình hoạt động</p>
+      
+      <div class="flex flex-col md:flex-row gap-6 justify-center items-center" id="pipelineSteps">
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-48 text-center" data-step="1">
+          <div class="text-4xl mb-3">📤</div>
+          <h3 class="font-semibold">Push Code</h3>
+        </div>
+        <div class="text-cyan-400 text-3xl">→</div>
+        
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-48 text-center" data-step="2">
+          <div class="text-4xl mb-3">⚡</div>
+          <h3 class="font-semibold">Actions Trigger</h3>
+        </div>
+        <div class="text-cyan-400 text-3xl">→</div>
+        
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-48 text-center" data-step="3">
+          <div class="text-4xl mb-3">🔨</div>
+          <h3 class="font-semibold">Build & Test</h3>
+        </div>
+        <div class="text-cyan-400 text-3xl">→</div>
+        
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-48 text-center" data-step="4">
+          <div class="text-4xl mb-3">🚀</div>
+          <h3 class="font-semibold">Deploy</h3>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <button onclick="triggerPipeline()" 
+                class="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-4 rounded-2xl font-semibold text-lg hover:scale-105 transition">
+          Simulate New Deployment
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16">Tính năng nổi bật</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-900 rounded-3xl p-8 hover:-translate-y-3 transition">
+          <i class="fas fa-bolt text-5xl text-cyan-400 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3">Lightning Fast</h3>
+          <p class="text-gray-400">Deploy chỉ trong vài giây nhờ GitHub Actions.</p>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 hover:-translate-y-3 transition">
+          <i class="fas fa-shield-alt text-5xl text-cyan-400 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3">Zero Downtime</h3>
+          <p class="text-gray-400">Luôn online khi cập nhật nội dung mới.</p>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 hover:-translate-y-3 transition">
+          <i class="fas fa-chart-line text-5xl text-cyan-400 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3">Live Monitoring</h3>
+          <p class="text-gray-400">Theo dõi workflow ngay trên GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo -->
+  <section id="demo" class="py-24 bg-black">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Live Demo - Counter App</h2>
+      <div class="bg-gray-900 rounded-3xl p-10 text-center">
+        <div id="counter" class="text-8xl font-bold text-cyan-400 mb-10">0</div>
+        <div class="flex justify-center gap-6">
+          <button onclick="increment()" class="bg-cyan-500 text-black px-8 py-4 rounded-2xl font-semibold text-xl hover:bg-cyan-400">+1</button>
+          <button onclick="resetCounter()" class="bg-gray-700 px-8 py-4 rounded-2xl font-semibold text-xl">Reset</button>
+        </div>
+        <p class="mt-8 text-gray-400">Thử tương tác → Push code mới → Website sẽ tự cập nhật!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-gray-400">Last deployed: <span id="lastDeploy" class="text-cyan-400"></span></p>
+      <p class="mt-4 text-sm text-gray-500">Cloud CI/CD Demo • Built with ❤️ using GitHub Actions + GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tailwind config
+    tailwind.config = {
+      content: [],
+      theme: { extend: {} }
+    }
+
+    // Pipeline Animation
+    function triggerPipeline() {
+      const steps = document.querySelectorAll('.pipeline-step');
+      const terminal = document.getElementById('terminal');
+      
+      steps.forEach(s => s.classList.remove('active', 'border-cyan-400'));
+      
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i > 0) steps[i-1].classList.remove('active');
+        if (i < steps.length) {
+          steps[i].classList.add('active', 'border-cyan-400');
+        }
+        i++;
+        if (i > steps.length) {
+          clearInterval(interval);
+          showSuccess();
+        }
+      }, 800);
+
+      // Simulate terminal
+      terminal.innerHTML = `
+        <p class="text-green-400">$ git push origin main</p>
+        <p class="text-yellow-400 mt-2">→ Triggering workflow...</p>
+        <p class="text-cyan-400 mt-4">✓ Build successful</p>
+        <p class="text-cyan-400">✓ Deploying to GitHub Pages</p>
+        <p class="text-green-400 mt-4">✓ Deployment completed!</p>
+      `;
+    }
+
+    function showSuccess() {
+      const notif = document.createElement('div');
+      notif.className = "fixed bottom-8 right-8 bg-green-600 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 z-50";
+      notif.innerHTML = `🎉 Deploy thành công! <i class="fas fa-check-circle"></i>`;
+      document.body.appendChild(notif);
+      setTimeout(() => notif.remove(), 4000);
+    }
+
+    // Counter Demo
+    let count = 0;
+    function increment() {
+      count++;
+      document.getElementById('counter').textContent = count;
+    }
+    function resetCounter() {
+      count = 0;
+      document.getElementById('counter').textContent = 0;
+    }
+
+    // Last deployed time
+    function updateLastDeploy() {
+      const now = new Date();
+      document.getElementById('lastDeploy').textContent = now.toLocaleString('vi-VN');
+    }
+
+    // Init
+    window.onload = () => {
+      updateLastDeploy();
+      setInterval(updateLastDeploy, 60000);
+    };
+  </script>
 </body>
 </html>
