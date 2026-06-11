@@ -1,7 +1,3 @@
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
 .hero-bg {
   background: linear-gradient(135deg, #0A2540 0%, #1E3A8A 100%);
 }
@@ -13,12 +9,16 @@ body {
 .pipeline-step.active {
   transform: scale(1.08);
   box-shadow: 0 0 25px rgba(0, 245, 255, 0.6);
-  border-color: rgb(103 232 249) !important;
+  border-color: #67e8f9 !important;
 }
 
-@media (max-width: 768px) {
-  .hero-bg h2 {
-    font-size: 2.75rem;
-    line-height: 1.1;
-  }
+body.light-mode {
+  background-color: #f8fafc;
+  color: #1e2937;
+}
+
+body.light-mode .bg-gray-900,
+body.light-mode .bg-black {
+  background-color: #f1f5f9;
+  color: #1e2937;
 }
