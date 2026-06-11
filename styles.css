@@ -1,3 +1,4 @@
+/* styles.css */
 .hero-bg {
   background: linear-gradient(135deg, #0A2540 0%, #1E3A8A 100%);
 }
@@ -14,7 +15,7 @@
   background-color: #164e63;
 }
 
-/* Light Mode */
+/* ==================== LIGHT MODE ==================== */
 body.light-mode {
   background-color: #f8fafc;
   color: #1e2937;
@@ -27,6 +28,7 @@ body.light-mode .hero-bg {
 body.light-mode .bg-gray-900,
 body.light-mode .bg-black {
   background-color: #f1f5f9 !important;
+  color: #1e2937;
 }
 
 body.light-mode .pipeline-step {
@@ -37,4 +39,5 @@ body.light-mode .pipeline-step {
 body.light-mode .pipeline-step.active {
   border-color: #22d3ee;
   box-shadow: 0 0 30px rgba(34, 211, 238, 0.7);
+  background-color: #67e8f9;
 }
