@@ -126,9 +126,109 @@
     </div>
   </section>
 
-  <!-- Các phần còn lại giữ nguyên (Thực Hành, Pipeline, Tiện ích, Trò chơi, Footer) -->
-  <!-- ... (giữ nguyên như bản trước) ... -->
+ <!-- Các Bước Thực Hành -->
+  <section id="thuchanh" class="py-20 bg-black">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Các Bước Thực Hành - Đề 4</h2>
+      <div class="space-y-8">
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">1</span>
+          <div><strong>Tạo GitHub Repository</strong> và clone về máy.</div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">2</span>
+          <div><strong>Xây dựng website tĩnh</strong> bằng HTML, CSS, JavaScript.</div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">3</span>
+          <div>Tạo file workflow <strong>.github/workflows/deploy.yml</strong></div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">4</span>
+          <div>Push code lên GitHub → Workflow tự động chạy</div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">5</span>
+          <div>Enable GitHub Pages và kiểm tra website được deploy tự động</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Pipeline Tương Tác -->
+  <section id="pipeline" class="py-20 bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-4">Quy Trình CI/CD Tương Tác</h2>
+      <p class="text-gray-400 mb-12">Nhấn nút để mô phỏng quá trình deploy</p>
+      <!-- Pipeline steps -->
+      <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-12" id="pipelineSteps">
+        <!-- Các bước pipeline giống code trước, mình rút gọn cho ngắn -->
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">📤 Push Code</div>
+        <div class="text-4xl text-cyan-400">→</div>
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">⚡ Actions Trigger</div>
+        <div class="text-4xl text-cyan-400">→</div>
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">🔨 Build</div>
+        <div class="text-4xl text-cyan-400">→</div>
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">🚀 Deploy</div>
+      </div>
+      <button onclick="triggerPipeline()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-4 rounded-2xl font-bold text-xl">
+        Mô Phỏng Triển Khai
+      </button>
+    </div>
+  </section>
+
+  <!-- Tiện Ích -->
+  <section id="tienich" class="py-20 bg-black">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Tiện Ích</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Máy tính -->
+        <div class="bg-gray-900 p-8 rounded-3xl">
+          <h3 class="text-2xl font-semibold mb-6">Máy Tính Đơn Giản</h3>
+          <input id="calcInput" type="text" class="w-full bg-gray-800 p-4 rounded-xl text-2xl mb-4" placeholder="Nhập biểu thức">
+          <button onclick="calculate()" class="bg-cyan-500 text-black px-8 py-3 rounded-xl font-bold">Tính</button>
+          <p id="calcResult" class="mt-6 text-3xl font-bold text-cyan-400"></p>
+        </div>
+        <!-- Ghi chú -->
+        <div class="bg-gray-900 p-8 rounded-3xl">
+          <h3 class="text-2xl font-semibold mb-6">Ghi Chú Nhanh</h3>
+          <textarea id="noteInput" class="w-full h-32 bg-gray-800 p-4 rounded-xl" placeholder="Viết ghi chú..."></textarea>
+          <button onclick="saveNote()" class="mt-4 bg-cyan-500 text-black px-8 py-3 rounded-xl font-bold">Lưu Ghi Chú</button>
+          <div id="notesList" class="mt-6 space-y-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trò Chơi -->
+  <section id="trochoi" class="py-20 bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-12">Trò Chơi Giải Trí</h2>
+      <div class="max-w-md mx-auto bg-gray-900 rounded-3xl p-10">
+        <h3 class="text-2xl mb-8">Oẳn Tù Tì (Rock Paper Scissors)</h3>
+        <div class="flex justify-center gap-6 text-6xl mb-10" id="gameResult">
+          👊 ✋ ✌️
+        </div>
+        <div class="flex justify-center gap-6">
+          <button onclick="playGame('rock')" class="text-5xl p-6 hover:scale-125 transition">👊</button>
+          <button onclick="playGame('paper')" class="text-5xl p-6 hover:scale-125 transition">✋</button>
+          <button onclick="playGame('scissors')" class="text-5xl p-6 hover:scale-125 transition">✌️</button>
+        </div>
+        <p id="gameMessage" class="mt-8 text-xl font-semibold"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-gray-400">Lần deploy cuối: <span id="lastDeploy" class="text-cyan-400"></span></p>
+      <p class="mt-6">Đề 4 - Tự động hóa triển khai website bằng GitHub Actions</p>
+      <p class="text-sm text-gray-500 mt-4">
+        Nguyễn Minh Nam • Lê Tuấn Anh • Lê Tiến Hùng
+      </p>
+    </div>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
