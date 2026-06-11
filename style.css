@@ -1,16 +1,15 @@
-/* styles.css */
 .hero-bg {
   background: linear-gradient(135deg, #0A2540 0%, #1E3A8A 100%);
 }
 
 .pipeline-step {
   transition: all 0.5s ease;
-  border: 2px solid #374151;
+  border: 3px solid #374151;
 }
 
 .pipeline-step.active {
-  transform: scale(1.08);
-  box-shadow: 0 0 30px rgba(103, 232, 249, 0.7);
+  transform: scale(1.1);
+  box-shadow: 0 0 35px rgba(103, 232, 249, 0.8);
   border-color: #67e8f9 !important;
   background-color: #164e63;
 }
@@ -28,7 +27,6 @@ body.light-mode .hero-bg {
 body.light-mode .bg-gray-900,
 body.light-mode .bg-black {
   background-color: #f1f5f9 !important;
-  color: #1e2937;
 }
 
 body.light-mode .pipeline-step {
@@ -38,5 +36,5 @@ body.light-mode .pipeline-step {
 
 body.light-mode .pipeline-step.active {
   border-color: #22d3ee;
-  box-shadow: 0 0 25px rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.7);
 }

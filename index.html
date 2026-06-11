@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-950 text-white dark-mode">
+<body class="bg-gray-950 text-white">
 
   <!-- Navbar -->
   <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gray-800">
@@ -58,13 +58,12 @@
     </div>
   </section>
 
-  <!-- Lý Thuyết - ĐÃ CẬP NHẬT -->
+  <!-- Lý Thuyết -->
   <section id="lythuyet" class="py-20 bg-gray-950">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-12">Lý Thuyết CI/CD</h2>
       
       <div class="grid md:grid-cols-2 gap-10">
-        <!-- CI/CD là gì -->
         <div class="bg-gray-900 p-10 rounded-3xl">
           <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3 text-cyan-400">
             <i class="fas fa-info-circle"></i> CI/CD là gì?
@@ -78,55 +77,27 @@
           </ul>
         </div>
 
-        <!-- GitHub Actions -->
         <div class="bg-gray-900 p-10 rounded-3xl">
           <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3 text-cyan-400">
             <i class="fas fa-cogs"></i> GitHub Actions
           </h3>
           <p class="text-gray-300 leading-relaxed">
             GitHub Actions là công cụ CI/CD mạnh mẽ được tích hợp sẵn trong GitHub. 
-            Cho phép tạo các workflow (.yml) để tự động chạy các lệnh khi có sự kiện như push code, pull request...
-          </p>
-          <p class="mt-4 text-sm text-gray-400">
-            Trong đề này, chúng ta sử dụng GitHub Actions để tự động build và deploy website lên GitHub Pages mỗi khi push code.
+            Cho phép tạo các workflow (.yml) để tự động chạy các lệnh khi có sự kiện như push code.
           </p>
         </div>
       </div>
 
-      <!-- GitHub Pages -->
       <div class="mt-12 bg-gray-900 p-10 rounded-3xl">
         <h3 class="text-2xl font-semibold mb-6 text-cyan-400">GitHub Pages</h3>
         <p class="text-gray-300">
-          GitHub Pages là dịch vụ miễn phí của GitHub giúp host website tĩnh (HTML, CSS, JS). 
-          Khi kết hợp với GitHub Actions, website sẽ được tự động cập nhật mỗi khi có code mới được push lên repository.
+          GitHub Pages là dịch vụ miễn phí giúp host website tĩnh. Khi kết hợp với GitHub Actions, website sẽ được tự động deploy mỗi khi push code.
         </p>
-      </div>
-
-      <!-- Lợi ích -->
-      <div class="mt-12">
-        <h3 class="text-2xl font-semibold text-center mb-8 text-cyan-400">Lợi ích của CI/CD trong dự án này</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-gray-900 p-8 rounded-3xl text-center">
-            <i class="fas fa-clock text-4xl text-cyan-400 mb-4"></i>
-            <h4 class="font-semibold mb-2">Tiết kiệm thời gian</h4>
-            <p class="text-gray-400">Không cần deploy thủ công, chỉ cần push code là website tự động cập nhật.</p>
-          </div>
-          <div class="bg-gray-900 p-8 rounded-3xl text-center">
-            <i class="fas fa-bug text-4xl text-cyan-400 mb-4"></i>
-            <h4 class="font-semibold mb-2">Giảm lỗi</h4>
-            <p class="text-gray-400">Tự động kiểm tra và build trước khi deploy.</p>
-          </div>
-          <div class="bg-gray-900 p-8 rounded-3xl text-center">
-            <i class="fas fa-rocket text-4xl text-cyan-400 mb-4"></i>
-            <h4 class="font-semibold mb-2">Tăng năng suất</h4>
-            <p class="text-gray-400">Nhóm có thể tập trung vào phát triển thay vì triển khai.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
- <!-- Các Bước Thực Hành -->
+  <!-- Thực Hành -->
   <section id="thuchanh" class="py-20 bg-black">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-12">Các Bước Thực Hành - Đề 4</h2>
@@ -155,14 +126,13 @@
     </div>
   </section>
 
-  <!-- Pipeline Tương Tác -->
+  <!-- Pipeline -->
   <section id="pipeline" class="py-20 bg-gray-950">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h2 class="text-4xl font-bold mb-4">Quy Trình CI/CD Tương Tác</h2>
       <p class="text-gray-400 mb-12">Nhấn nút để mô phỏng quá trình deploy</p>
-      <!-- Pipeline steps -->
+      
       <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-12" id="pipelineSteps">
-        <!-- Các bước pipeline giống code trước, mình rút gọn cho ngắn -->
         <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">📤 Push Code</div>
         <div class="text-4xl text-cyan-400">→</div>
         <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">⚡ Actions Trigger</div>
@@ -171,7 +141,9 @@
         <div class="text-4xl text-cyan-400">→</div>
         <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">🚀 Deploy</div>
       </div>
-      <button onclick="triggerPipeline()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-4 rounded-2xl font-bold text-xl">
+      
+      <button onclick="triggerPipeline()" 
+              class="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-4 rounded-2xl font-bold text-xl hover:scale-105 transition">
         Mô Phỏng Triển Khai
       </button>
     </div>
@@ -182,14 +154,12 @@
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-12">Tiện Ích</h2>
       <div class="grid md:grid-cols-2 gap-10">
-        <!-- Máy tính -->
         <div class="bg-gray-900 p-8 rounded-3xl">
           <h3 class="text-2xl font-semibold mb-6">Máy Tính Đơn Giản</h3>
           <input id="calcInput" type="text" class="w-full bg-gray-800 p-4 rounded-xl text-2xl mb-4" placeholder="Nhập biểu thức">
           <button onclick="calculate()" class="bg-cyan-500 text-black px-8 py-3 rounded-xl font-bold">Tính</button>
           <p id="calcResult" class="mt-6 text-3xl font-bold text-cyan-400"></p>
         </div>
-        <!-- Ghi chú -->
         <div class="bg-gray-900 p-8 rounded-3xl">
           <h3 class="text-2xl font-semibold mb-6">Ghi Chú Nhanh</h3>
           <textarea id="noteInput" class="w-full h-32 bg-gray-800 p-4 rounded-xl" placeholder="Viết ghi chú..."></textarea>
@@ -229,6 +199,7 @@
       </p>
     </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
