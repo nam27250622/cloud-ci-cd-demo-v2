@@ -3,140 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CloudFlow - Demo CI/CD</title>
+  <title>Cloud CI/CD Demo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-950 text-white">
+<body class="bg-gray-950 text-white dark-mode">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50">
+  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-        CloudFlow
+      <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        Cloud CI/CD
       </h1>
-      <div class="flex gap-8 text-sm">
-        <a href="#pipeline" class="hover:text-cyan-400 transition">Quy Trình</a>
-        <a href="#features" class="hover:text-cyan-400 transition">Tính Năng</a>
-        <a href="#demo" class="hover:text-cyan-400 transition">Thử Nghiệm</a>
+      <div class="flex items-center gap-8">
+        <a href="#lythuyet" class="hover:text-cyan-400 transition">Lý Thuyết</a>
+        <a href="#thuchanh" class="hover:text-cyan-400 transition">Thực Hành</a>
+        <a href="#pipeline" class="hover:text-cyan-400 transition">Pipeline</a>
+        <a href="#tienich" class="hover:text-cyan-400 transition">Tiện Ích</a>
+        <a href="#trochoi" class="hover:text-cyan-400 transition">Trò Chơi</a>
+        
+        <button onclick="toggleTheme()" id="themeToggle"
+                class="p-3 rounded-xl bg-gray-800 hover:bg-gray-700 transition">
+          <i class="fas fa-moon text-xl"></i>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero-bg min-h-screen flex items-center pt-20">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-6xl font-bold mb-6">Cloud CI/CD Demo</h2>
+      <p class="text-2xl text-gray-300 mb-8">Tự động hóa triển khai website bằng GitHub Actions</p>
+      
+      <div class="inline-flex items-center gap-3 bg-black/50 backdrop-blur-md px-8 py-3 rounded-2xl border border-cyan-500/30">
+        <span class="text-cyan-400">Đề 4</span>
+      </div>
+
+      <div class="mt-16">
+        <h3 class="text-xl mb-4 text-gray-400">Thành viên nhóm</h3>
+        <div class="flex flex-wrap justify-center gap-8 text-lg">
+          <div>Nguyễn Minh Nam</div>
+          <div>Lê Tuấn Anh</div>
+          <div>Lê Tiến Hùng</div>
+        </div>
+      </div>
+
+      <button onclick="triggerPipeline()" 
+              class="mt-12 bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-xl px-12 py-5 rounded-3xl flex items-center gap-4 mx-auto transition">
+        <i class="fas fa-rocket"></i>
+        Kích Hoạt Deploy Demo
+      </button>
+    </div>
+  </section>
+
+  <!-- Lý Thuyết -->
+  <section id="lythuyet" class="py-20 bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Lý Thuyết CI/CD</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-gray-900 p-10 rounded-3xl">
+          <h3 class="text-2xl font-semibold mb-6 text-cyan-400">CI/CD là gì?</h3>
+          <p class="text-gray-300 leading-relaxed">
+            CI/CD (Continuous Integration / Continuous Deployment) là phương pháp tự động hóa quy trình phát triển phần mềm. 
+            Giúp phát hiện lỗi sớm, tích hợp code nhanh chóng và triển khai tự động.
+          </p>
+        </div>
+        <div class="bg-gray-900 p-10 rounded-3xl">
+          <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Lợi ích</h3>
+          <ul class="space-y-4 text-gray-300">
+            <li class="flex items-start gap-3"><i class="fas fa-check text-green-400 mt-1"></i> Tăng tốc độ triển khai</li>
+            <li class="flex items-start gap-3"><i class="fas fa-check text-green-400 mt-1"></i> Giảm lỗi thủ công</li>
+            <li class="flex items-start gap-3"><i class="fas fa-check text-green-400 mt-1"></i> Tăng chất lượng code</li>
+            <li class="flex items-start gap-3"><i class="fas fa-check text-green-400 mt-1"></i> Dễ dàng rollback</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Các Bước Thực Hành -->
+  <section id="thuchanh" class="py-20 bg-black">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Các Bước Thực Hành - Đề 4</h2>
       <div class="space-y-8">
-        <h2 class="text-6xl font-bold leading-tight">
-          Triển khai <span class="text-cyan-400">Nhanh hơn.</span><br>
-          Ít lỗi <span class="text-cyan-400">Hơn.</span>
-        </h2>
-        <p class="text-xl text-gray-300">
-          Trải nghiệm quy trình CI/CD tự động bằng GitHub Actions.<br>
-          Chỉ cần push code — Website tự động deploy lên GitHub Pages.
-        </p>
-        <button onclick="triggerPipeline()" 
-                class="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold text-lg px-10 py-4 rounded-2xl flex items-center gap-3 transition">
-          <i class="fas fa-rocket"></i>
-          Kích Hoạt Triển Khai Ngay
-        </button>
-        <div class="flex items-center gap-6 text-sm">
-          <div class="flex items-center gap-2">
-            <i class="fas fa-check text-green-400"></i>
-            <span>GitHub Pages</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fas fa-check text-green-400"></i>
-            <span>Tự Động Deploy</span>
-          </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">1</span>
+          <div><strong>Tạo GitHub Repository</strong> và clone về máy.</div>
         </div>
-      </div>
-      
-      <div class="bg-black/40 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-8 shadow-2xl">
-        <div id="terminal" class="bg-black rounded-2xl p-6 font-mono text-sm h-96 overflow-hidden">
-          <p class="text-green-400">$ git push origin main</p>
-          <p class="text-gray-400 mt-4">Đang chờ GitHub Actions...</p>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">2</span>
+          <div><strong>Xây dựng website tĩnh</strong> bằng HTML, CSS, JavaScript.</div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">3</span>
+          <div>Tạo file workflow <strong>.github/workflows/deploy.yml</strong></div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">4</span>
+          <div>Push code lên GitHub → Workflow tự động chạy</div>
+        </div>
+        <div class="bg-gray-900 rounded-3xl p-8 flex gap-6">
+          <span class="text-4xl font-bold text-cyan-400 w-12">5</span>
+          <div>Enable GitHub Pages và kiểm tra website được deploy tự động</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Pipeline -->
-  <section id="pipeline" class="py-24 bg-black">
+  <!-- Pipeline Tương Tác -->
+  <section id="pipeline" class="py-20 bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-4">Quy Trình CI/CD Tương Tác</h2>
+      <p class="text-gray-400 mb-12">Nhấn nút để mô phỏng quá trình deploy</p>
+      <!-- Pipeline steps -->
+      <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-12" id="pipelineSteps">
+        <!-- Các bước pipeline giống code trước, mình rút gọn cho ngắn -->
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">📤 Push Code</div>
+        <div class="text-4xl text-cyan-400">→</div>
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">⚡ Actions Trigger</div>
+        <div class="text-4xl text-cyan-400">→</div>
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">🔨 Build</div>
+        <div class="text-4xl text-cyan-400">→</div>
+        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center">🚀 Deploy</div>
+      </div>
+      <button onclick="triggerPipeline()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-4 rounded-2xl font-bold text-xl">
+        Mô Phỏng Triển Khai
+      </button>
+    </div>
+  </section>
+
+  <!-- Tiện Ích -->
+  <section id="tienich" class="py-20 bg-black">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-4">Quy Trình CI/CD</h2>
-      <p class="text-center text-gray-400 mb-12">Nhấn nút bên dưới để xem quy trình hoạt động trực quan</p>
-      
-      <div class="flex flex-col md:flex-row gap-6 justify-center items-center" id="pipelineSteps">
-        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center" data-step="1">
-          <div class="text-4xl mb-3">📤</div>
-          <h3 class="font-semibold">Push Code</h3>
+      <h2 class="text-4xl font-bold text-center mb-12">Tiện Ích</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Máy tính -->
+        <div class="bg-gray-900 p-8 rounded-3xl">
+          <h3 class="text-2xl font-semibold mb-6">Máy Tính Đơn Giản</h3>
+          <input id="calcInput" type="text" class="w-full bg-gray-800 p-4 rounded-xl text-2xl mb-4" placeholder="Nhập biểu thức">
+          <button onclick="calculate()" class="bg-cyan-500 text-black px-8 py-3 rounded-xl font-bold">Tính</button>
+          <p id="calcResult" class="mt-6 text-3xl font-bold text-cyan-400"></p>
         </div>
-        <div class="text-cyan-400 text-3xl">→</div>
-        
-        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center" data-step="2">
-          <div class="text-4xl mb-3">⚡</div>
-          <h3 class="font-semibold">Kích Hoạt Actions</h3>
-        </div>
-        <div class="text-cyan-400 text-3xl">→</div>
-        
-        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center" data-step="3">
-          <div class="text-4xl mb-3">🔨</div>
-          <h3 class="font-semibold">Build & Test</h3>
-        </div>
-        <div class="text-cyan-400 text-3xl">→</div>
-        
-        <div class="pipeline-step bg-gray-900 border border-gray-700 rounded-2xl p-6 w-52 text-center" data-step="4">
-          <div class="text-4xl mb-3">🚀</div>
-          <h3 class="font-semibold">Deploy</h3>
-        </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <button onclick="triggerPipeline()" 
-                class="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-4 rounded-2xl font-semibold text-lg hover:scale-105 transition">
-          Mô Phỏng Triển Khai Mới
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section id="features" class="py-24 bg-gray-950">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-16">Tính Năng Nổi Bật</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-900 rounded-3xl p-8 hover:-translate-y-3 transition">
-          <i class="fas fa-bolt text-5xl text-cyan-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Triển Khai Siêu Tốc</h3>
-          <p class="text-gray-400">Chỉ vài giây là hoàn thành nhờ GitHub Actions.</p>
-        </div>
-        <div class="bg-gray-900 rounded-3xl p-8 hover:-translate-y-3 transition">
-          <i class="fas fa-shield-alt text-5xl text-cyan-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Không Gián Đoạn</h3>
-          <p class="text-gray-400">Website luôn online khi cập nhật nội dung.</p>
-        </div>
-        <div class="bg-gray-900 rounded-3xl p-8 hover:-translate-y-3 transition">
-          <i class="fas fa-chart-line text-5xl text-cyan-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Giám Sát Thời Gian Thực</h3>
-          <p class="text-gray-400">Theo dõi workflow ngay trên GitHub.</p>
+        <!-- Ghi chú -->
+        <div class="bg-gray-900 p-8 rounded-3xl">
+          <h3 class="text-2xl font-semibold mb-6">Ghi Chú Nhanh</h3>
+          <textarea id="noteInput" class="w-full h-32 bg-gray-800 p-4 rounded-xl" placeholder="Viết ghi chú..."></textarea>
+          <button onclick="saveNote()" class="mt-4 bg-cyan-500 text-black px-8 py-3 rounded-xl font-bold">Lưu Ghi Chú</button>
+          <div id="notesList" class="mt-6 space-y-2"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Live Demo -->
-  <section id="demo" class="py-24 bg-black">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Thử Nghiệm Trực Tiếp</h2>
-      <div class="bg-gray-900 rounded-3xl p-10 text-center">
-        <div id="counter" class="text-8xl font-bold text-cyan-400 mb-10">0</div>
+  <!-- Trò Chơi -->
+  <section id="trochoi" class="py-20 bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-12">Trò Chơi Giải Trí</h2>
+      <div class="max-w-md mx-auto bg-gray-900 rounded-3xl p-10">
+        <h3 class="text-2xl mb-8">Oẳn Tù Tì (Rock Paper Scissors)</h3>
+        <div class="flex justify-center gap-6 text-6xl mb-10" id="gameResult">
+          👊 ✋ ✌️
+        </div>
         <div class="flex justify-center gap-6">
-          <button onclick="increment()" class="bg-cyan-500 text-black px-8 py-4 rounded-2xl font-semibold text-xl hover:bg-cyan-400">+1</button>
-          <button onclick="resetCounter()" class="bg-gray-700 px-8 py-4 rounded-2xl font-semibold text-xl">Reset</button>
+          <button onclick="playGame('rock')" class="text-5xl p-6 hover:scale-125 transition">👊</button>
+          <button onclick="playGame('paper')" class="text-5xl p-6 hover:scale-125 transition">✋</button>
+          <button onclick="playGame('scissors')" class="text-5xl p-6 hover:scale-125 transition">✌️</button>
         </div>
-        <p class="mt-8 text-gray-400">Thử tương tác → Push code lên GitHub → Website sẽ tự động cập nhật!</p>
+        <p id="gameMessage" class="mt-8 text-xl font-semibold"></p>
       </div>
     </div>
   </section>
@@ -145,68 +180,13 @@
   <footer class="bg-black py-12 border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <p class="text-gray-400">Lần deploy cuối: <span id="lastDeploy" class="text-cyan-400"></span></p>
-      <p class="mt-4 text-sm text-gray-500">Cloud CI/CD Demo • Được xây dựng bằng GitHub Actions + GitHub Pages</p>
+      <p class="mt-6">Đề 4 - Tự động hóa triển khai website bằng GitHub Actions</p>
+      <p class="text-sm text-gray-500 mt-4">
+        Nguyễn Minh Nam • Lê Tuấn Anh • Lê Tiến Hùng
+      </p>
     </div>
   </footer>
 
-  <script>
-    tailwind.config = { content: [], theme: { extend: {} } }
-
-    function triggerPipeline() {
-      const steps = document.querySelectorAll('.pipeline-step');
-      const terminal = document.getElementById('terminal');
-      
-      steps.forEach(s => s.classList.remove('active', 'border-cyan-400'));
-      
-      let i = 0;
-      const interval = setInterval(() => {
-        if (i > 0) steps[i-1].classList.remove('active');
-        if (i < steps.length) {
-          steps[i].classList.add('active', 'border-cyan-400');
-        }
-        i++;
-        if (i > steps.length) {
-          clearInterval(interval);
-          showSuccess();
-        }
-      }, 800);
-
-      terminal.innerHTML = `
-        <p class="text-green-400">$ git push origin main</p>
-        <p class="text-yellow-400 mt-2">→ Đang kích hoạt workflow...</p>
-        <p class="text-cyan-400 mt-4">✓ Build thành công</p>
-        <p class="text-cyan-400">✓ Đang triển khai lên GitHub Pages</p>
-        <p class="text-green-400 mt-4">✓ Triển khai hoàn tất!</p>
-      `;
-    }
-
-    function showSuccess() {
-      const notif = document.createElement('div');
-      notif.className = "fixed bottom-8 right-8 bg-green-600 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 z-50";
-      notif.innerHTML = `🎉 Triển khai thành công! <i class="fas fa-check-circle"></i>`;
-      document.body.appendChild(notif);
-      setTimeout(() => notif.remove(), 4000);
-    }
-
-    let count = 0;
-    function increment() {
-      count++;
-      document.getElementById('counter').textContent = count;
-    }
-    function resetCounter() {
-      count = 0;
-      document.getElementById('counter').textContent = 0;
-    }
-
-    function updateLastDeploy() {
-      const now = new Date();
-      document.getElementById('lastDeploy').textContent = now.toLocaleString('vi-VN');
-    }
-
-    window.onload = () => {
-      updateLastDeploy();
-      setInterval(updateLastDeploy, 60000);
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
